@@ -53,38 +53,31 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h6 class="card-title">Update Admin Profile </h6>
+                        <h6 class="card-title">Change Admin Password </h6>
 
-                        <form class="forms-sample" enctype="multipart/form-data">
+                        <form class="forms-sample" method="POST" action="{{route('admin.update.password')}}" >
                             @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" class="form-control" id="username" autocomplete="off" value='{{$Profiledata->username }}'>
-                            </div>
+                                <label for="old_password" class="form-label">Old Password</label>
+                                <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" autocomplete="off" >
+                                @error('old_password')
+                                    <span class='text-danger'>{{$message}}</span>
+                                @enderror
+                            </div> 
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" id="name" autocomplete="off" value='{{$Profiledata->name }}'>
+                                <label for="new_password" class="form-label">New Password</label>
+                                <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" autocomplete="off" >
+                                @error('new_password')
+                                    <span class='text-danger'>{{$message}}</span>
+                                @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" name="email" class="form-control" id="email" value='{{$Profiledata->email }}'>
+                               <div class="mb-3">
+                                <label for="new_password_confirmation" class="form-label"> Confirm New Password</label>
+                                <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation" autocomplete="off" >
+                               
                             </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="text" name="phone" class="form-control" id="phone" value='{{$Profiledata->phone }}'>
-                            </div>
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" name="address" class="form-control" id="address" value='{{$Profiledata->address }}'>
-                            </div>
-                            <div class="mb-3">
-                                <label for="photo" class="form-label">Photo</label>
-                                <input class="form-control" name="photo" type="file" id="image">
-                            </div>
-                            <div class="mb-3">
-                                <label for="showimage" class="form-label"></label>
-                                <img id="showimage" class="wd-80 rounded-circle" src="{{(!empty($Profiledata->photo)) ? url('uploads/admin_images/'.$Profiledata->photo) :url('uploads/no_image.jpg')}}" alt="profile">
-                            </div>
+                         
+                          
 
 
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
@@ -105,15 +98,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- show pic when change in input file -->
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#image').change(function(e) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#showimage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        })
 
-    })
 </script>
 @endsection
