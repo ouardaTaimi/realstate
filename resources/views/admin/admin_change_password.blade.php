@@ -74,12 +74,7 @@
                                <div class="mb-3">
                                 <label for="new_password_confirmation" class="form-label"> Confirm New Password</label>
                                 <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation" autocomplete="off" >
-                               
                             </div>
-                         
-                          
-
-
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                         </form>
 

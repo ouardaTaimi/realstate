@@ -88,19 +88,19 @@
  var type = "{{ Session::get('alert-type','info') }}"
  switch(type){
     case 'info':
-    toastr.info(" {{ Session::get('message') }} ");
+    toastr.info(" {{ Session::get('message') }} ");//blue info
     break;
 
     case 'success':
-    toastr.success(" {{ Session::get('message') }} ");
+    toastr.success(" {{ Session::get('message') }} ");//green
     break;
 
     case 'warning':
-    toastr.warning(" {{ Session::get('message') }} ");
+    toastr.warning(" {{ Session::get('message') }} ");//orange 
     break;
 
     case 'error':
-    toastr.error(" {{ Session::get('message') }} ");
+    toastr.error(" {{ Session::get('message') }} ");//red
     break; 
  }
  @endif 
